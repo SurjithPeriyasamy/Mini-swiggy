@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 200px;
+  box-shadow: 0px 5px 10px gray;
+}
+#header ul {
+  display: flex;
+  gap: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  list-style-type: none;
+}
+#header ul li:hover {
+  cursor: pointer;
+  color: deeppink;
+}
+.left {
+  display: flex;
+  align-items: center;
+  color: deeppink;
+  font-size: 12px;
+}
+.logo {
+  height: 60px;
+}
+#body {
+  padding: 30px 70px;
+}
+.rescards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 10px 0px;
+}
+.card {
+  width: 280px;
+  transition: all 0.1s linear;
+}
+.card:hover {
+  cursor: pointer;
+  scale: 0.9;
+}
+.resdetail {
+  padding: 2px 10px;
+}
+.resimg {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+}
+.cistar {
+  height: 20px;
+  width: 20px;
+  background-color: green;
+  padding: 4px;
+  border-radius: 100%;
+  color: white;
+}
+.dot {
+  font-size: small;
+  padding-top: 3px;
+}
+.res-left {
+  margin: 20px 0px;
+  display: flex;
+  gap: 40px;
+}
+.line-two {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.rate,
+.time {
+  font-weight: 600;
+}
+.resdetail h4 {
+  color: gray;
+  font-size: medium;
+  font-weight: 500;
+}
+.mind {
+  display: flex;
+  overflow-x: scroll;
+  gap: 30px;
+  border-bottom: thin solid gray;
+}
+.mindcard img {
+  cursor: pointer;
+  width: 150px;
+  border-radius: 100%;
+}
