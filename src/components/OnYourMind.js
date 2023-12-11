@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 const OnYourMind = ({ mindList }) => {
   const { info } = mindList?.imageGridCards;
   const { title } = mindList?.header;
-  return (
-    <div>
-      <h2>{title}</h2>
-      <div className="mind">
+
+  return !mindList ? null : (
+    <div className="py-5">
+      <h2 className="text-2xl font-bold pb-4">{title}</h2>
+      <div className="flex gap-8 overflow-x-scroll">
         {info.map((food) => (
           <Link
             to={

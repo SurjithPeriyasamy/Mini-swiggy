@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { Link, useParams } from "react-router-dom";
 import { useOnMindRestaurants } from "../hooks/useOnMindRestaurants";
+import ShimmerUi from "./ShimmerUi";
 
 const OnMindRestaurants = () => {
   const { category } = useParams();
 
   const resList = useOnMindRestaurants(category);
-  if (resList.length === 0) return null;
+  if (resList.length === 0) return <ShimmerUi />;
   const onMindCards = resList.data.cards.filter(
     (cards) =>
       cards?.card?.card?.["@type"] ===
@@ -15,18 +16,23 @@ const OnMindRestaurants = () => {
   );
   const { title, description } = resList?.data?.cards[0]?.card?.card;
   return (
-    <div>
-      <h2>{title}</h2>
-      <h4>{description}</h4>
-      <div style={{ display: "flex", gap: "30px", flexWrap: "wrap" }}>
-        {onMindCards.map((res) => (
-          <Link
-            to={"/restaurants/" + res.card.card.info.id}
-            key={res.card.card.info.id}
-          >
-            <RestaurantCard resData={res.card.card} />
-          </Link>
-        ))}{" "}
+    <div className="w-3/4 m-auto flex justify-center mt-16">
+      <div>
+        <h2 className="font-semibold text-5xl">{title}</h2>
+        <h4 className="my-3 text-lg text-gray-600 tracking-wide">
+          {description}
+        </h4>
+        <h2 className="font-semibold text-2xl mb-7">Restaurants To Explore</h2>
+        <div className="flex flex-wrap gap-9 justify-center">
+          {onMindCards.map((res) => (
+            <Link
+              to={"/restaurants/" + res.card.card.info.id}
+              key={res.card.card.info.id}
+            >
+              <RestaurantCard resData={res.card.card} />
+            </Link>
+          ))}{" "}
+        </div>
       </div>
     </div>
   );

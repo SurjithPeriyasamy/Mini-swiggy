@@ -1,53 +1,12 @@
 const ShimmerUi = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "20px",
-        justifyContent: "center",
-      }}
-    >
+    <div className="flex flex-wrap gap-5 justify-center">
       {[...Array(15)].map((arr, i) => (
-        <div
-          key={i}
-          style={{
-            height: "180px",
-            width: "220px",
-            padding: "10px",
-          }}
-        >
-          <div
-            style={{
-              height: "150px",
-              borderRadius: "20px",
-              backgroundColor: "gray",
-            }}
-          ></div>
-          <h2
-            style={{
-              height: "10px",
-              marginBottom: "5px",
-              borderRadius: "10px",
-              backgroundColor: "coral",
-            }}
-          ></h2>
-          <h4
-            style={{
-              height: "10px",
-              marginBottom: "5px",
-              borderRadius: "10px",
-              backgroundColor: "coral",
-            }}
-          ></h4>
-          <h4
-            style={{
-              height: "10px",
-              marginBottom: "5px",
-              borderRadius: "10px",
-              backgroundColor: "coral",
-            }}
-          ></h4>
+        <div key={i} className="h-52 w-56 p-3 mb-5">
+          <div className="h-44 rounded-lg bg-gray-200"></div>
+          <h2 className="h-3 rounded-lg bg-gray-300"></h2>
+          <h4 className="h-3 rounded-lg bg-gray-300 my-2"></h4>
+          <h4 className="h-3 rounded-lg bg-gray-300"></h4>
         </div>
       ))}
     </div>

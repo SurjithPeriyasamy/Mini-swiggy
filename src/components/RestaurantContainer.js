@@ -2,20 +2,30 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { TbFilterCheck } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import { useFilteredRes } from "../hooks/useFilteredRes";
 
 const RestaurantContainer = ({ resList }) => {
+  const [filteredRes, setFilteredRes] = useState(resList);
   const [searchText, setSearchText] = useState("");
 
-  const filteredRes = useFilteredRes(resList, searchText);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const searchResults = resList.filter((res) =>
+        res.info.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredRes(searchResults);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchText]);
+
   const handleChange = (e) => {
     setSearchText(e.target.value);
   };
 
   return (
-    <div className="res-container">
-      <div className="res-left">
+    <div className="my-10">
+      <div className="flex gap-6 my-5 items-center justify-between">
         <input
+          className="border-2 w-64 p-2 rounded-md focus:outline-none border-gray-500"
           type="text"
           placeholder="Search for Restauarants"
           onChange={handleChange}
@@ -23,17 +33,7 @@ const RestaurantContainer = ({ resList }) => {
         />
 
         <button
-          style={{
-            padding: "10px",
-            borderRadius: "10px",
-            border: "none",
-            boxShadow: "2px 2px 2px gray",
-            letterSpacing: "2px",
-            display: "flex",
-            alignItems: "center",
-            gap: "5px",
-            cursor: "pointer",
-          }}
+          className="flex hover:scale-95 font-medium items-center gap-3 p-3 rounded-lg border-none shadow-lg tracking-wide "
           onClick={() => {
             const filterValue = resList.filter((res) => res.info.avgRating > 4);
             setFilteredRes(filterValue);
@@ -43,7 +43,7 @@ const RestaurantContainer = ({ resList }) => {
         </button>
       </div>
 
-      <div className="rescards">
+      <div className="flex justify-center gap-10 flex-wrap">
         {filteredRes.map((res) => (
           <Link to={`/restaurants/${res.info.id}`} key={res.info.id}>
             <RestaurantCard resData={res} />
