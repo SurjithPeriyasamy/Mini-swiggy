@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import OnYourMindCard from "./OnYourMindCard";
 import { Link } from "react-router-dom";
-const OnYourMind = ({ mindList }) => {
+
+const OnYourMind = () => {
+  const mindList = useSelector((store) => store.restaurants.onMindLists);
   const { info } = mindList?.imageGridCards;
   const { title } = mindList?.header;
 

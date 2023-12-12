@@ -10,14 +10,19 @@ import ShimmerUi from "./components/ShimmerUi";
 import { useOnlineStatus } from "./hooks/useOnlineStatus";
 import OfflinePage from "./components/OfflinePage";
 import OnMindRestaurants from "./components/OnMindRestaurants";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const App = () => {
   const onlineStatus = useOnlineStatus();
   return (
-    <div>
-      <Header />
-      {onlineStatus ? <Outlet /> : <OfflinePage />}
-    </div>
+    <Provider store={appStore}>
+      <div>
+        <Header />
+        {onlineStatus ? <Outlet /> : <OfflinePage />}
+      </div>
+    </Provider>
   );
 };
 
@@ -44,6 +49,7 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+
       {
         path: "/collection/:category",
         element: <OnMindRestaurants />,
@@ -51,6 +57,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

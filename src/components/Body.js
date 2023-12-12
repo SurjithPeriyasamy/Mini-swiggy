@@ -2,14 +2,16 @@ import OnYourMind from "./OnYourMind";
 import RestaurantContainer from "./RestaurantContainer";
 import ShimmerUi from "./ShimmerUi";
 import { useResLists } from "../hooks/useResLists";
+import { useSelector } from "react-redux";
 
 const Body = () => {
-  const { mindList, resList } = useResLists();
-  return mindList.length === 0 && resList.length === 0 ? (
+  useResLists();
+  const resList = useSelector((store) => store.restaurants.resLists);
+  return resList.length === 0 ? (
     <ShimmerUi />
   ) : (
     <div className="w-[78%] m-auto">
-      <OnYourMind mindList={mindList} />
+      <OnYourMind />
       <RestaurantContainer resList={resList} />
     </div>
   );
