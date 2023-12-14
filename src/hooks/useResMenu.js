@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
 export const useResMenu = (resId) => {
-  const [resMenu, setResMenu] = useState([]);
+  const [resInfo, setResInfo] = useState(null);
+  const [resOffers, setResOffers] = useState([]);
+  const [isPureVeg, setIsPureVeg] = useState("");
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -13,8 +17,33 @@ export const useResMenu = (resId) => {
     );
     const json = await data.json();
 
-    setResMenu(json?.data?.cards);
-  };
+    setResInfo(json?.data?.cards[0]?.card?.card?.info);
 
-  return resMenu;
+    setResOffers(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers
+    );
+
+    const category =
+      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (cat) =>
+          cat?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+
+    const pureVeg =
+      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card
+        ?.card;
+
+    setIsPureVeg(pureVeg?.isPureVeg ? pureVeg?.vegOnlyDetails?.imageId : "");
+    setItems(category);
+    setFilteredItems(category);
+  };
+  return {
+    resInfo: resInfo,
+    resOffers: resOffers,
+    items: items,
+    isPureVeg: isPureVeg,
+    filteredItems: filteredItems,
+    setFilteredItems,
+  };
 };

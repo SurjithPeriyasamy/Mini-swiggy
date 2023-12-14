@@ -7,18 +7,17 @@ const OnYourMind = () => {
   const { info } = mindList?.imageGridCards;
   const { title } = mindList?.header;
 
+  const ans = info[1].action.link;
+
   return !mindList ? null : (
     <div className="py-5">
       <h2 className="text-2xl font-bold pb-4">{title}</h2>
-      <div className="flex gap-8 overflow-x-scroll">
+      <div className="flex gap-8 overflow-x-scroll scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-600 scrollbar-track-gray-100">
         {info.map((food) => (
           <Link
-            to={
-              "/collection/" +
-              food.entityId.slice(36, 41) +
-              "_" +
-              food.action.text.split(" ").join("")
-            }
+            to={`/collection/${food.action.link.slice(
+              ans.indexOf("=") + 1
+            )}&item=${food.action.text}`}
             key={food.id}
           >
             <OnYourMindCard foodData={food} />

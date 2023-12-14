@@ -1,67 +1,61 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { IMAGE_URL } from "../utils/constants";
-import { FaStar } from "react-icons/fa";
 import RestaurantCategory from "./RestaurantCategory";
 import { useResMenu } from "../hooks/useResMenu";
 import ShimmerUi from "./ShimmerUi";
+import RestaurantInfo from "./RestaurantInfo";
+import IsVegContainer from "./IsVegContainer";
+import ResOffersCard from "./ResOffersCard";
 
 const RestaurantMenu = () => {
-  const { resId } = useParams();
   const [showIndex, setShowIndex] = useState(null);
+  const [isShowVeg, setIsShowVeg] = useState(false);
 
-  const resMenu = useResMenu(resId);
-
-  if (resMenu.length === 0) return <ShimmerUi />;
+  const { resId } = useParams();
 
   const {
-    avgRatingString,
-    totalRatingsString,
-    city,
-    cuisines,
-    feeDetails,
-    areaName,
-    name,
-  } = resMenu[0]?.card?.card?.info;
+    resInfo,
+    resOffers,
+    items,
+    isPureVeg,
+    filteredItems,
+    setFilteredItems,
+  } = useResMenu(resId);
 
-  const category = resMenu[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-    (cat) =>
-      cat?.card?.card?.["@type"] ===
-      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+  if (!resInfo) return <ShimmerUi />;
 
   return (
-    <div className="w-1/2 m-auto mt-6">
-      <div className="flex border-b-2  pb-7 justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-medium">{name}</h2>
-          <h4 className=" text-gray-600">{cuisines.join(", ")}</h4>
-          <h4 className=" text-gray-600 text-sm">{areaName + ", " + city}</h4>
-          <div className="my-1 flex gap-2 items-center text-sm text-gray-600">
-            <img
-              className="h-5"
-              src={IMAGE_URL + feeDetails.icon}
-              alt="delivery"
-            />
-            <span>{feeDetails.message ? feeDetails.message : ""}</span>
-          </div>
+    <div className="w-1/2 m-auto  mt-6">
+      <RestaurantInfo resInfo={resInfo} />
+
+      <div className=" border-b-2 pb-5">
+        <div className="flex gap-5 my-6 overflow-x-hidden">
+          {resOffers.map((offers) => (
+            <div
+              className="border shrink-0 relative flex justify-center items-center shadow-lg rounded-lg"
+              key={offers?.info?.resId}
+            >
+              <ResOffersCard resOffers={offers} />
+            </div>
+          ))}
         </div>
-        <div className="flex flex-col items-center gap-2 border p-2 shadow-lg">
-          <div className="flex items-center gap-2 border-b font-medium text-green-800">
-            <FaStar />
-            <span>{avgRatingString}</span>
-          </div>
-          <h4 className="tracking-tighter text-sm text-gray-500 font-medium">
-            {totalRatingsString}
-          </h4>
-        </div>
+
+        <IsVegContainer
+          items={items}
+          isPureVeg={isPureVeg}
+          filteredItems={filteredItems}
+          setFilteredItems={setFilteredItems}
+          setIsShowVeg={setIsShowVeg}
+          isShowVeg={isShowVeg}
+        />
       </div>
 
       <div className="my-5 bg-gray-100">
-        {category.map((cat, index) => (
+        {filteredItems.map((cat, index) => (
           <RestaurantCategory
-            key={cat.card.card.title}
-            category={cat}
+            key={isShowVeg ? cat.onlyVeg.title : cat.card.card.title}
+            title={isShowVeg ? cat.onlyVeg.title : cat.card.card.title}
+            itemCards={isShowVeg ? cat.onlyVeg.cards : cat.card.card.itemCards}
             showItem={index === showIndex ? true : false}
             setIndex={() => {
               setShowIndex(index === showIndex ? null : index);

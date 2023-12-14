@@ -15,7 +15,7 @@ const ItemList = ({ item }) => {
   };
 
   return (
-    <div className="flex justify-between my-5 border-b-2 pb-6">
+    <div className="flex justify-between my-5 border-b-2 pb-6 text-start">
       <div className="sm:basis-5/6">
         {itemAttribute.vegClassifier === "VEG" ? (
           <GoDotFill className="border-2 border-green-700 text-green-700" />

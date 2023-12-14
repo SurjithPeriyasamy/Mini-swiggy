@@ -1,9 +1,7 @@
 import React from "react";
 import ItemList from "./ItemList";
 import { IoIosArrowDown } from "react-icons/io";
-const RestaurantCategory = ({ category, showItem, setIndex }) => {
-  const { itemCards } = category.card.card;
-
+const RestaurantCategory = ({ itemCards, title, showItem, setIndex }) => {
   const handleShow = () => {
     setIndex();
   };
@@ -14,7 +12,7 @@ const RestaurantCategory = ({ category, showItem, setIndex }) => {
           className="flex justify-between py-4 cursor-pointer text-gray-700 text-lg font-bold"
           onClick={handleShow}
         >
-          {category.card.card.title} ({itemCards.length})
+          {title} ({itemCards.length})
           <IoIosArrowDown
             className={
               "text-2xl duration-300 " + (showItem ? "rotate-180" : "rotate-0")

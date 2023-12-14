@@ -27,7 +27,7 @@ const App = () => {
 };
 
 const About = lazy(() => import("./components/About"));
-const appRouter = createBrowserRouter([
+export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,

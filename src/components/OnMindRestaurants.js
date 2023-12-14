@@ -3,13 +3,10 @@ import RestaurantCard from "./RestaurantCard";
 import { Link, useParams } from "react-router-dom";
 import { useOnMindRestaurants } from "../hooks/useOnMindRestaurants";
 import ShimmerUi from "./ShimmerUi";
-import { useSelector } from "react-redux";
 
 const OnMindRestaurants = () => {
   const { category } = useParams();
   const resList = useOnMindRestaurants(category);
-
-  // const resList = useSelector((store) => store.restaurants.onMindRestaurants);
 
   if (!resList) return <ShimmerUi />;
   const onMindCards = resList?.cards.filter(
