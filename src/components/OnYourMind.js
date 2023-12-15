@@ -10,8 +10,8 @@ const OnYourMind = () => {
   const ans = info[1].action.link;
 
   return !mindList ? null : (
-    <div className="py-5">
-      <h2 className="text-2xl font-bold pb-4">{title}</h2>
+    <div className="py-5 text-center lg:text-start m-auto ">
+      <h2 className="text-xl font-bold pb-4">{title}</h2>
       <div className="flex gap-8 overflow-x-scroll scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-600 scrollbar-track-gray-100">
         {info.map((food) => (
           <Link

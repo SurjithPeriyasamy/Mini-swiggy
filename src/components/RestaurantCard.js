@@ -19,7 +19,7 @@ const RestaurantCard = ({ resData }) => {
           </label>
         )}
         <img
-          className="w-full h-48 rounded-xl"
+          className="w-full h-44 rounded-xl"
           src={IMAGE_URL + cloudinaryImageId}
           alt="Restaurant cards"
         />

@@ -10,7 +10,7 @@ const Body = () => {
   return resList.length === 0 ? (
     <ShimmerUi />
   ) : (
-    <div className="w-[78%] m-auto">
+    <div className="w-[76%] lg:w-[82%] xl:w-[79%] m-auto">
       <OnYourMind />
       <RestaurantContainer resList={resList} />
     </div>

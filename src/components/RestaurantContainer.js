@@ -23,7 +23,7 @@ const RestaurantContainer = ({ resList }) => {
 
   return (
     <div className="my-10">
-      <div className="flex gap-6 my-5 items-center justify-between">
+      <div className="flex lg:flex-row flex-col gap-6 my-5 items-center justify-between">
         <input
           className="border-2 w-64 p-2 rounded-md focus:outline-none border-gray-500"
           type="text"
@@ -33,7 +33,7 @@ const RestaurantContainer = ({ resList }) => {
         />
 
         <button
-          className="flex hover:scale-95 font-medium items-center gap-3 p-3 rounded-lg border-none shadow-lg tracking-wide "
+          className="bg-gray-300 flex hover:scale-95 font-medium items-center gap-3 p-3 rounded-lg border-none shadow-2xl tracking-wide "
           onClick={() => {
             const filterValue = resList.filter((res) => res.info.avgRating > 4);
             setFilteredRes(filterValue);
@@ -43,7 +43,7 @@ const RestaurantContainer = ({ resList }) => {
         </button>
       </div>
 
-      <div className="flex justify-center gap-10 flex-wrap">
+      <div className="flex justify-center 2xl:gap-10 xl:gap-9 lg:gap-6 gap-10 flex-wrap">
         {filteredRes.map((res) => (
           <Link to={`/restaurants/${res.info.id}`} key={res.info.id}>
             <RestaurantCard resData={res} />

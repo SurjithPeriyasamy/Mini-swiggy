@@ -16,14 +16,14 @@ const OnMindRestaurants = () => {
   );
   const { title, description } = resList?.cards[0]?.card?.card;
   return (
-    <div className="w-3/4 m-auto flex justify-center mt-16">
-      <div>
-        <h2 className="font-semibold text-5xl">{title}</h2>
-        <h4 className="my-3 text-lg text-gray-600 tracking-wide">
+    <div className="xl:w-[85%] w-[82%] m-auto text-center md:text-start flex justify-center mt-16">
+      <div className="xl:mx-12">
+        <h2 className="font-semibold text-4xl">{title}</h2>
+        <h4 className="my-3 text-lg text-gray-500 tracking-wide">
           {description}
         </h4>
         <h2 className="font-semibold text-2xl mb-7">Restaurants To Explore</h2>
-        <div className="flex flex-wrap gap-9 justify-center">
+        <div className="flex flex-wrap gap-7 justify-center text-start">
           {onMindCards.map((res) => (
             <Link
               to={"/restaurants/" + res.card.card.info.id}
