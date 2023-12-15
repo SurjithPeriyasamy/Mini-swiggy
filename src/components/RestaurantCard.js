@@ -11,9 +11,11 @@ const RestaurantCard = ({ resData }) => {
       <div className="relative">
         {aggregatedDiscountInfoV3 && (
           <label className="p-2 pb-1 text-white bg-gradient-to-t from-black font-extrabold text-xl tracking-tight rounded-b-xl absolute z-10 bottom-0 w-full">
-            {aggregatedDiscountInfoV3?.header +
-              " " +
-              aggregatedDiscountInfoV3?.subHeader}
+            <span>{aggregatedDiscountInfoV3.header}</span>
+            <span>
+              {aggregatedDiscountInfoV3["subHeader"] &&
+                aggregatedDiscountInfoV3.subHeader}
+            </span>
           </label>
         )}
         <img

@@ -10,12 +10,14 @@ const IsVegContainer = ({
   isShowVeg,
 }) => {
   const handleShowVeg = () => {
-    setIsShowVeg(!isShowVeg);
-
     if (isShowVeg) {
       setFilteredItems(items);
+      setIsShowVeg(false);
     } else {
+      setIsShowVeg(true);
+
       const filteredOutput = [];
+
       items.forEach((cat) => {
         const vegFilter = cat.card.card.itemCards.filter(
           (item) => item.card.info.itemAttribute.vegClassifier === "VEG"

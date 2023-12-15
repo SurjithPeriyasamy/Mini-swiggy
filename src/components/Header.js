@@ -4,10 +4,10 @@ import { RiWifiOffLine } from "react-icons/ri";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
 import { HiOutlineStatusOnline } from "react-icons/hi";
 import { useSelector } from "react-redux";
-
+import cart from "../images/cart.png";
 const Header = () => {
   const onlineStatus = useOnlineStatus();
-  const cartItem = useSelector((store) => store.cart.items);
+  const cartItemLength = useSelector((store) => store.cart.totalItemsCount);
   return (
     <div className="shadow-lg">
       <div className="flex w-3/4 m-auto justify-between pt-5 py-2 items-center">
@@ -45,11 +45,11 @@ const Header = () => {
               <Link to={"/contact"}>Contact</Link>
             </li>
             <li className="hover:text-pink-500">
-              <Link to={"/cart"} className="flex gap-1">
-                <span className="border-2 border-black px-1 [transform:rotateX(40deg)]">
-                  {cartItem.length}
+              <Link to={"/cart"} className="flex gap-1 relative">
+                <img className="h-9" src={cart} alt="cart" />
+                <span className="rounded-full bg-green-600 text-sm text-white absolute h-6 w-6 text-center pt-[2px] -top-3 -left-4">
+                  {cartItemLength}
                 </span>{" "}
-                <span>Cart</span>
               </Link>
             </li>
           </ul>

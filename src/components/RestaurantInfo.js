@@ -44,7 +44,7 @@ const RestaurantInfo = ({ resInfo }) => {
           <span>{feeDetails.message ? feeDetails.message : ""}</span>
         </div>
       </div>
-      <div className="my-4 flex items-center gap-5 text-gray-700 font-bold">
+      <div className="my-4 flex items-center gap-5 text-gray-600 font-bold">
         <div className="flex items-center gap-2 font-bold ">
           <img className="h-5" src={minsIcon} alt="mins" />
           <span>{sla.slaString}</span>

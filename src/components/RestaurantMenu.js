@@ -6,6 +6,7 @@ import ShimmerUi from "./ShimmerUi";
 import RestaurantInfo from "./RestaurantInfo";
 import IsVegContainer from "./IsVegContainer";
 import ResOffersCard from "./ResOffersCard";
+import { useSelector } from "react-redux";
 
 const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
@@ -13,29 +14,26 @@ const RestaurantMenu = () => {
 
   const { resId } = useParams();
 
-  const {
-    resInfo,
-    resOffers,
-    items,
-    isPureVeg,
-    filteredItems,
-    setFilteredItems,
-  } = useResMenu(resId);
+  const { filteredItems, setFilteredItems } = useResMenu(resId);
 
-  if (!resInfo) return <ShimmerUi />;
+  const ans = useSelector((store) => store.resMenu.resMenus);
+
+  if (!ans[resId] && filteredItems.length == 0) return <ShimmerUi />;
+
+  const { resInfo, resOffers, items, isPureVeg } = ans[resId];
 
   return (
     <div className="w-1/2 m-auto  mt-6">
       <RestaurantInfo resInfo={resInfo} />
 
       <div className=" border-b-2 pb-5">
-        <div className="flex gap-5 my-6 overflow-x-hidden">
-          {resOffers.map((offers) => (
+        <div className="flex gap-5 my-6 overflow-x-scroll scrollbar-thin scrollbar-thumb-cyan-500 scrollbar-track-gray-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full py-6">
+          {resOffers.map((offer) => (
             <div
               className="border shrink-0 relative flex justify-center items-center shadow-lg rounded-lg"
-              key={offers?.info?.resId}
+              key={offer?.info?.resId}
             >
-              <ResOffersCard resOffers={offers} />
+              <ResOffersCard resOffers={offer} />
             </div>
           ))}
         </div>
@@ -43,7 +41,6 @@ const RestaurantMenu = () => {
         <IsVegContainer
           items={items}
           isPureVeg={isPureVeg}
-          filteredItems={filteredItems}
           setFilteredItems={setFilteredItems}
           setIsShowVeg={setIsShowVeg}
           isShowVeg={isShowVeg}
@@ -53,8 +50,9 @@ const RestaurantMenu = () => {
       <div className="my-5 bg-gray-100">
         {filteredItems.map((cat, index) => (
           <RestaurantCategory
-            key={isShowVeg ? cat.onlyVeg.title : cat.card.card.title}
+            key={isShowVeg ? cat?.onlyVeg?.title : cat?.card?.card?.title}
             title={isShowVeg ? cat.onlyVeg.title : cat.card.card.title}
+            resId={resId}
             itemCards={isShowVeg ? cat.onlyVeg.cards : cat.card.card.itemCards}
             showItem={index === showIndex ? true : false}
             setIndex={() => {

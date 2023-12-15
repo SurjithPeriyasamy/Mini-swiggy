@@ -1,13 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import ItemList from "./ItemList";
 import { clearCart } from "../utils/cartSlice";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const cartItem = useSelector((store) => store.cart.items);
+  const [added, setAdded] = useState([]);
+  const cartItem = useSelector((store) => store.cart.addedItems);
+
+  const ans = Object.keys(cartItem);
+
+  useEffect(() => {
+    const output = ans.map((key) => cartItem[key]);
+    setAdded(output);
+  }, [cartItem]);
+
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
   return (
     <div className="w-1/2 mt-9 m-auto text-center">
       <button
@@ -16,13 +27,13 @@ const Cart = () => {
       >
         Clear Cart
       </button>
-      {cartItem.length === 0 && (
+      {ans.length === 0 && (
         <h1 className="font-semibold tracking-wider mb-6">
           Your Cart Is Empty ,Please Add Your Items...
         </h1>
       )}
-      {cartItem.map((item) => (
-        <ItemList item={item} />
+      {added.map((item, i) => (
+        <ItemList key={i} item={item.items} />
       ))}
     </div>
   );

@@ -7,7 +7,7 @@ const ResOffersCard = ({ resOffers }) => {
     <div
       className={
         "relative flex justify-center items-center py-4 " +
-        (offerTag ? "pl-6 pr-3" : "px-3")
+        (offerTag ? "pl-7 pr-3" : "px-3")
       }
     >
       {offerTag && (
