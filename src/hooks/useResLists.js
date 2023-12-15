@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addLists } from "../utils/restaurantsSlice";
+import { THING_PROXY } from "../utils/constants";
 
 export const useResLists = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export const useResLists = () => {
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      `${THING_PROXY}https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
     );
     const json = await data.json();
 

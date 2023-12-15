@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addResMenu } from "../utils/resMenuSlice";
+import { THING_PROXY } from "../utils/constants";
 
 export const useResMenu = (resId) => {
   const [filteredItems, setFilteredItems] = useState([]);
@@ -15,7 +16,7 @@ export const useResMenu = (resId) => {
 
   const fetchData = async () => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0826802&lng=80.2707184&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
+      `${THING_PROXY}https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0826802&lng=80.2707184&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
     );
     const json = await data.json();
 
