@@ -19,8 +19,8 @@ const IsVegContainer = ({
       const filteredOutput = [];
 
       items.forEach((cat) => {
-        const vegFilter = cat.card.card.itemCards.filter(
-          (item) => item.card.info.itemAttribute.vegClassifier === "VEG"
+        const vegFilter = cat?.card?.card?.itemCards.filter(
+          (item) => item?.card?.info?.itemAttribute?.vegClassifier === "VEG"
         );
         if (vegFilter.length !== 0) {
           filteredOutput.push({

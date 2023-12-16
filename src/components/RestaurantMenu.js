@@ -51,7 +51,7 @@ const RestaurantMenu = () => {
         {filteredItems.map((cat, index) => (
           <RestaurantCategory
             key={isShowVeg ? cat?.onlyVeg?.title : cat?.card?.card?.title}
-            title={isShowVeg ? cat.onlyVeg.title : cat.card.card.title}
+            title={isShowVeg ? cat.onlyVeg?.title : cat?.card?.card?.title}
             resId={resId}
             itemCards={isShowVeg ? cat.onlyVeg.cards : cat.card.card.itemCards}
             showItem={index === showIndex ? true : false}

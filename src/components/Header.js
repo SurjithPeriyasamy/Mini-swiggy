@@ -48,7 +48,7 @@ const Header = () => {
           </button>
           <ul
             className={
-              "absolute text-center lg:static bg-white left-0 top-[107px] lg:top-0 w-full lg:w-fit z-30 duration-300 flex flex-col py-14 lg:py-0 lg:flex-row origin-top  items-center gap-10 lg:gap-9 text-lg font-medium " +
+              "absolute text-center lg:static bg-white left-0 top-[107px] lg:top-0 w-full lg:w-fit z-30 duration-300 flex flex-col py-14 lg:py-0 lg:flex-row origin-top  items-center gap-10 lg:gap-10 text-lg font-medium " +
               (showMenu ? "scale-y-100" : "scale-y-0 lg:scale-100")
             }
           >
@@ -66,19 +66,19 @@ const Header = () => {
             </li>
             <li
               onClick={handleCloseMenu}
-              className="hover:bg-gray-400 hover:scale-125 lg:hover:bg-inherit w-full lg:w-fit py-5  lg:hover:text-pink-500"
+              className="hover:bg-gray-400 hover:scale-125 duration-200 lg:hover:bg-inherit w-full lg:w-fit py-5  lg:hover:text-pink-500"
             >
               <Link to={"/"}>Home</Link>
             </li>
             <li
               onClick={handleCloseMenu}
-              className="lg:hover:text-pink-500 hover:scale-125 lg:hover:bg-inherit w-full lg:w-fit py-5 hover:bg-gray-400"
+              className="lg:hover:text-pink-500 hover:scale-125 duration-200 lg:hover:bg-inherit w-full lg:w-fit py-5 hover:bg-gray-400"
             >
               <Link to={"/about"}>About Us</Link>
             </li>
             <li
               onClick={handleCloseMenu}
-              className="lg:hover:text-pink-500 hover:scale-125 lg:hover:bg-inherit w-full lg:w-fit py-5 hover:bg-gray-400"
+              className="lg:hover:text-pink-500 hover:scale-125 duration-200 lg:hover:bg-inherit w-full lg:w-fit py-5 hover:bg-gray-400"
             >
               <Link to={"/contact"}>Contact</Link>
             </li>

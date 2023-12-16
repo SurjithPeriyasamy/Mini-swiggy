@@ -40,7 +40,6 @@ export const useResMenu = (resId) => {
           json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers,
         isPureVeg: pureVeg?.isPureVeg ? pureVeg?.vegOnlyDetails?.imageId : "",
         items: category,
-        filteredItems: category,
       },
     };
     dispatch(addResMenu(resDetails));

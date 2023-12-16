@@ -8,11 +8,11 @@ const Cart = () => {
   const [added, setAdded] = useState([]);
   const cartItem = useSelector((store) => store.cart.addedItems);
 
-  const ans = Object.keys(cartItem);
+  const items = Object.keys(cartItem);
 
   useEffect(() => {
-    const output = ans.map((key) => cartItem[key]);
-    setAdded(output);
+    const AddedOutput = items.map((key) => cartItem[key]);
+    setAdded(AddedOutput);
   }, [cartItem]);
 
   const handleClearCart = () => {
@@ -27,7 +27,7 @@ const Cart = () => {
       >
         Clear Cart
       </button>
-      {ans.length === 0 && (
+      {items.length === 0 && (
         <h1 className="font-semibold tracking-wider mb-6">
           Your Cart Is Empty ,Please Add Your Items...
         </h1>
