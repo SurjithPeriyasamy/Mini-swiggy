@@ -20,15 +20,15 @@ const Header = () => {
     setShowMenu(false);
   };
   return (
-    <div className="shadow-lg">
+    <div className="shadow-lg md:fixed md:top-0 md:w-full md:z-30 bg-white">
       <div className="flex md:w-3/4 w-[90%] m-auto justify-between pt-5 py-2 items-center">
         <Link
           onClick={handleCloseMenu}
           to={"/"}
-          className="flex items-center group scale-75 md:scale-100"
+          className="flex items-center group scale-75 md:scale-100 italic"
         >
           <img
-            className="h-20 group-hover:rotate-180 duration-500"
+            className="h-[72px] group-hover:rotate-180 duration-500"
             src={logo}
             alt="logo"
           />

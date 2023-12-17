@@ -20,7 +20,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="lg:w-1/2 w-3/4 mt-9 m-auto text-center">
+    <div className="lg:w-1/2 w-3/4 mt-9 md:mt-32 m-auto text-center">
       <button
         className="bg-black text-white font-semibold my-5 p-2 rounded-lg"
         onClick={handleClearCart}

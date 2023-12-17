@@ -23,7 +23,7 @@ const RestaurantMenu = () => {
   const { resInfo, resOffers, items, isPureVeg } = ans[resId];
 
   return (
-    <div className="xl:w-1/2 md:w-[70%] w-[82%] m-auto mt-6">
+    <div className="xl:w-1/2 md:w-[70%] w-[82%] m-auto mt-6 md:mt-[135px]">
       <RestaurantInfo resInfo={resInfo} />
 
       <div className=" border-b-2 pb-5">

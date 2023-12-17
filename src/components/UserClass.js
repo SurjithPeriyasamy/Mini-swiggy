@@ -13,7 +13,7 @@ class UserClass extends Component {
         style={{ backgroundImage: `url('${aboutBg}')` }}
       >
         <div className="bg-black h-screen bg-opacity-[0.85]">
-          <div className="pt-20 flex flex-col items-center m-auto w-1/2">
+          <div className="pt-20 flex flex-col items-center m-auto w-1/2 md:pt-32">
             <h3 className="font-semibold text-3xl text-white tracking-widest">
               {name}
             </h3>

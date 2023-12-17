@@ -16,7 +16,7 @@ const OnMindRestaurants = () => {
   );
   const { title, description } = resList?.cards[0]?.card?.card;
   return (
-    <div className="xl:w-[85%] w-[82%] m-auto text-center md:text-start flex justify-center mt-16">
+    <div className="xl:w-[85%] 2xl:[82%] w-[82%] m-auto text-center md:text-start flex justify-center mt-16 md:mt-32">
       <div className="xl:mx-12">
         <h2 className="font-semibold text-4xl">{title}</h2>
         <h4 className="my-3 text-lg text-gray-500 tracking-wide">
