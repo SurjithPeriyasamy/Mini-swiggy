@@ -48,7 +48,7 @@ const Header = () => {
           </button>
           <ul
             className={
-              "absolute text-center lg:static bg-white left-0 top-[107px] lg:top-0 w-full lg:w-fit z-30 duration-300 flex flex-col py-14 lg:py-0 lg:flex-row origin-top  items-center gap-10 lg:gap-10 text-lg font-medium " +
+              "absolute text-center lg:static bg-white left-0 top-[100px] lg:top-0 w-full lg:w-fit z-30 duration-300 flex flex-col py-14 lg:py-0 lg:flex-row origin-top  items-center gap-10 lg:gap-10 text-lg font-medium " +
               (showMenu ? "scale-y-100" : "scale-y-0 lg:scale-100")
             }
           >
