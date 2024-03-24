@@ -10,7 +10,10 @@ const RestaurantContainer = ({ resList }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       const searchResults = resList.filter((res) =>
-        res.info.name.toLowerCase().includes(searchText.toLowerCase())
+        res.info.name
+          .toLowerCase()
+          .replace(/ /g, "")
+          .includes(searchText.toLowerCase().replace(/ /g, ""))
       );
       setFilteredRes(searchResults);
     }, 300);

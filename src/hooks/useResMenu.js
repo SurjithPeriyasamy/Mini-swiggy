@@ -45,7 +45,7 @@ export const useResMenu = (resId) => {
     dispatch(addResMenu(resDetails));
   };
   return {
-    filteredItems: filteredItems,
+    filteredItems,
     setFilteredItems,
   };
 };

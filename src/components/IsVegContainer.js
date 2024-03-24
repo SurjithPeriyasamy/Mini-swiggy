@@ -16,21 +16,22 @@ const IsVegContainer = ({
     } else {
       setIsShowVeg(true);
 
-      const filteredOutput = [];
+      const filteredOutput = items
+        .map((cat) => {
+          const vegFilter = cat?.card?.card?.itemCards.filter(
+            (item) => item?.card?.info?.itemAttribute?.vegClassifier === "VEG"
+          );
 
-      items.forEach((cat) => {
-        const vegFilter = cat?.card?.card?.itemCards.filter(
-          (item) => item?.card?.info?.itemAttribute?.vegClassifier === "VEG"
-        );
-        if (vegFilter.length !== 0) {
-          filteredOutput.push({
-            onlyVeg: {
-              title: cat.card.card.title,
-              cards: vegFilter,
-            },
-          });
-        }
-      });
+          if (vegFilter.length !== 0) {
+            return {
+              onlyVeg: {
+                title: cat.card.card.title,
+                cards: vegFilter,
+              },
+            };
+          }
+        })
+        .filter((item) => item);
       setFilteredItems(filteredOutput);
     }
   };
@@ -55,7 +56,13 @@ const IsVegContainer = ({
             (isShowVeg ? "translate-x-full" : "translate-x-0")
           }
         >
-          {isShowVeg && <GoDotFill className=" text-green-700" />}
+          <GoDotFill
+            className={
+              isShowVeg
+                ? "opacity-100 text-green-700 duration-300"
+                : "opacity-0 duration-300"
+            }
+          />
         </span>
       </div>
     </div>

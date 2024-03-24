@@ -8,15 +8,12 @@ const RestaurantCategory = ({
   setIndex,
   resId,
 }) => {
-  const handleShow = () => {
-    setIndex();
-  };
   return (
     <div>
       <div className="my-5 bg-white px-1">
         <h2
           className="flex justify-between py-4 cursor-pointer text-gray-700 font-bold"
-          onClick={handleShow}
+          onClick={setIndex}
         >
           {title} ({itemCards.length})
           <IoIosArrowDown
