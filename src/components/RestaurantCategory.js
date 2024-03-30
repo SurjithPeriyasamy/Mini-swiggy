@@ -22,14 +22,24 @@ const RestaurantCategory = ({
             }
           />
         </h2>
-        {showItem &&
-          itemCards.map((cards) => (
-            <ItemList
-              key={cards.card.info.id}
-              resId={resId}
-              item={cards.card.info}
-            />
-          ))}
+        <div
+          className={
+            "grid duration-300 transition-all overflow-hidden " +
+            (showItem
+              ? `grid-rows-[1fr] opacity-100`
+              : "grid-rows-[0fr] opacity-0 ")
+          }
+        >
+          <div className="overflow-hidden">
+            {itemCards.map((cards) => (
+              <ItemList
+                key={cards.card.info.id}
+                resId={resId}
+                item={cards.card.info}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
