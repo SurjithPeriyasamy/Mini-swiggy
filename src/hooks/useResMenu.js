@@ -21,23 +21,23 @@ export const useResMenu = (resId) => {
     const json = await data.json();
 
     const category =
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         (cat) =>
           cat?.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
 
     const pureVeg =
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]?.card
         ?.card;
-
+    console.log(category, pureVeg);
     setFilteredItems(category);
 
     const resDetails = {
       [resId]: {
-        resInfo: json?.data?.cards[0]?.card?.card?.info,
+        resInfo: json?.data?.cards[2]?.card?.card?.info,
         resOffers:
-          json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.offers,
+          json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers,
         isPureVeg: pureVeg?.isPureVeg ? pureVeg?.vegOnlyDetails?.imageId : "",
         items: category,
       },
