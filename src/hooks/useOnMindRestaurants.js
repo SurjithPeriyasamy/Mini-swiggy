@@ -7,6 +7,7 @@ export const useOnMindRestaurants = (category) => {
   const dispatch = useDispatch();
 
   const [collectionLink, categories] = category.split("&item=");
+
   const collection = useSelector(
     (store) => store.restaurants.onMindRestaurants
   );
@@ -20,7 +21,7 @@ export const useOnMindRestaurants = (category) => {
   };
   useEffect(() => {
     !collection[categories] && fetchData();
-  }, [category]);
+  }, []);
 
   return collection[categories];
 };

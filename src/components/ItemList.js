@@ -15,9 +15,7 @@ const ItemList = ({ item, resId }) => {
 
   const handleAddItem = () => {
     if (addedItems[name]) {
-      dispatch(
-        addItem({ [name]: { count: addedItems[name].count + 1, items: item } })
-      );
+      dispatch(addItem(name));
     } else {
       if (!restaurantId) {
         dispatch(addItem({ [name]: { count: 1, items: item } }));
@@ -58,7 +56,7 @@ const ItemList = ({ item, resId }) => {
                 <button onClick={handleRemoveItem} className="text-xl">
                   -
                 </button>
-                <span>{addedItems[name] && addedItems[name].count}</span>
+                <span>{addedItems[name].count}</span>
                 <button className="text-xl" onClick={handleAddItem}>
                   +
                 </button>

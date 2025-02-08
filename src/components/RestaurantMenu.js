@@ -18,7 +18,7 @@ const RestaurantMenu = () => {
 
   const ans = useSelector((store) => store.resMenu.resMenus);
 
-  if (!ans[resId] && filteredItems.length == 0) return <ShimmerUi />;
+  if (!ans[resId]) return <ShimmerUi />;
 
   const { resInfo, resOffers, items, isPureVeg } = ans[resId];
 

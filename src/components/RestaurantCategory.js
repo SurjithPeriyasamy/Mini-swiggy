@@ -17,17 +17,17 @@ const RestaurantCategory = ({
         >
           {title} ({itemCards.length})
           <IoIosArrowDown
-            className={
-              "text-2xl duration-300 " + (showItem ? "rotate-180" : "rotate-0")
-            }
+            className={`text-2xl duration-300  ${
+              showItem ? "rotate-180" : "rotate-0"
+            }`}
           />
         </h2>
         <div
           className={
-            "grid duration-300 transition-all overflow-hidden " +
+            "grid duration-200 transition-all " +
             (showItem
               ? `grid-rows-[1fr] opacity-100`
-              : "grid-rows-[0fr] opacity-0 ")
+              : "grid-rows-[0fr] opacity-0")
           }
         >
           <div className="overflow-hidden">

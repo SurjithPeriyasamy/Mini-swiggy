@@ -1,19 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ItemList from "./ItemList";
 import { clearCart } from "../utils/cartSlice";
-import { useEffect, useState } from "react";
+import { useCartItems } from "../hooks/useCartItems";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const [added, setAdded] = useState([]);
-  const cartItem = useSelector((store) => store.cart.addedItems);
 
-  const items = Object.keys(cartItem);
-
-  useEffect(() => {
-    const AddedOutput = items.map((key) => cartItem[key]);
-    setAdded(AddedOutput);
-  }, [cartItem]);
+  const addedItems = useCartItems();
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -27,12 +20,12 @@ const Cart = () => {
       >
         Clear Cart
       </button>
-      {items.length === 0 && (
+      {!addedItems.length && (
         <h1 className="font-semibold tracking-wider mb-6">
           Your Cart Is Empty ,Please Add Your Items...
         </h1>
       )}
-      {added.map((item, i) => (
+      {addedItems.map((item, i) => (
         <ItemList key={i} item={item.items} />
       ))}
     </div>

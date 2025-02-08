@@ -16,22 +16,29 @@ const IsVegContainer = ({
     } else {
       setIsShowVeg(true);
 
-      const filteredOutput = items
-        .map((cat) => {
-          const vegFilter = cat?.card?.card?.itemCards.filter(
-            (item) => item?.card?.info?.itemAttribute?.vegClassifier === "VEG"
-          );
+      const filteredOutput = [];
+      items.forEach((cat) => {
+        const vegFilter = cat?.card?.card?.itemCards.filter(
+          (item) => item?.card?.info?.itemAttribute?.vegClassifier === "VEG"
+        );
 
-          if (vegFilter.length !== 0) {
-            return {
-              onlyVeg: {
-                title: cat.card.card.title,
-                cards: vegFilter,
-              },
-            };
-          }
-        })
-        .filter((item) => item);
+        if (vegFilter.length !== 0) {
+          filteredOutput.push({
+            onlyVeg: {
+              title: cat.card.card.title,
+              cards: vegFilter,
+            },
+          });
+          // return {
+          //   onlyVeg: {
+          //     title: cat.card.card.title,
+          //     cards: vegFilter,
+          //   },
+          // };
+        }
+      });
+      // .filter((item) => item);
+
       setFilteredItems(filteredOutput);
     }
   };

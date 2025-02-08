@@ -8,7 +8,7 @@ const OnYourMind = () => {
   const { title } = mindList?.header;
 
   const ans = info[1].action.link;
-
+  console.log(ans, info);
   return !mindList ? null : (
     <div className="py-5 text-center lg:text-start m-auto ">
       <h2 className="text-xl font-bold pb-4">{title}</h2>
@@ -16,7 +16,7 @@ const OnYourMind = () => {
         {info.map((food) => (
           <Link
             to={`/collection/${food.action.link.slice(
-              ans.indexOf("=") + 1
+              food.action.link.indexOf("=") + 1
             )}&item=${food.action.text}`}
             key={food.id}
           >
